@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-2022
     steps:
       - uses: actions/checkout@v5
 
@@ -23,6 +23,9 @@ jobs:
           node-version: 22
           cache: pnpm
           cache-dependency-path: web-panel/pnpm-lock.yaml
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
 
       - name: Build and test
         shell: pwsh
